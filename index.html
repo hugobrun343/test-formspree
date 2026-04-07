@@ -1,243 +1,400 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Readiness Assessment</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style type="text/tailwindcss">
-      @theme {
-        --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-      }
-      [data-theme="cupcake"] {
-        --color-primary: #5b8def;
-        --color-primary-content: #fff;
-        --color-secondary: #7ca5f0;
-        --color-secondary-content: #fff;
-      }
-    </style>
-  </head>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Readiness Check — Onepoint</title>
+  <meta name="description" content="Découvre ton profil IA en 2 minutes. Questionnaire interactif par Onepoint.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
 
-  <body class="min-h-screen bg-[#e6eefb] flex items-center justify-center px-4 py-12 font-sans antialiased">
+  <!-- Animated background orbs -->
+  <div class="bg-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-    <div class="w-full max-w-xl">
+  <div class="layout">
 
-      <!-- Header -->
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/15 mb-4">
-          <i data-lucide="brain" class="w-7 h-7 text-primary"></i>
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">onepoint<span class="logo-dot">.</span></div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+        <i data-lucide="sun" class="theme-icon theme-icon--sun"></i>
+        <i data-lucide="moon" class="theme-icon theme-icon--moon"></i>
+      </button>
+    </header>
+
+    <!-- Main Card -->
+    <div class="card">
+
+      <!-- Progress Bar -->
+      <div class="progress hidden" id="progress-bar">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
-        <h1 class="text-3xl font-bold tracking-tight text-base-content">Is Your Business AI-Ready?</h1>
-        <p class="mt-2 text-base-content/50 text-sm max-w-md mx-auto leading-relaxed whitespace-nowrap">
-          Take 1 minute to assess your AI readiness and get insights.
-        </p>
+        <button class="progress-dot" data-goto="1" type="button" aria-label="Étape 1"></button>
+        <button class="progress-dot" data-goto="2" type="button" aria-label="Étape 2"></button>
+        <button class="progress-dot" data-goto="3" type="button" aria-label="Étape 3"></button>
+        <button class="progress-dot" data-goto="4" type="button" aria-label="Étape 4"></button>
+        <button class="progress-dot" data-goto="5" type="button" aria-label="Étape 5"></button>
       </div>
 
-      <!-- Card -->
-      <div class="card bg-base-100 shadow-2xl rounded-3xl border border-base-300/40">
-        <div class="card-body px-10 py-10">
+      <!-- Steps -->
+      <div class="steps-container">
+        <form id="ai-form">
 
-          <!-- ── Success ── -->
-          <div data-fs-success class="hidden">
-            <div class="text-center py-10">
-              <div class="bg-success/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto">
-                <i data-lucide="check-circle-2" class="w-10 h-10 text-success"></i>
+          <!-- Step 0 — Welcome -->
+          <section class="step active" data-step="0">
+            <div class="welcome">
+              <div class="welcome-icon">
+                <i data-lucide="brain" class="welcome-brain"></i>
               </div>
-              <h2 class="mt-5 text-xl font-semibold text-base-content">Thanks for your answers!</h2>
-              <p class="mt-1.5 text-base-content/50 text-sm">We'll get back to you with personalized AI insights.</p>
-            </div>
-          </div>
-
-          <!-- ── Error ── -->
-          <div data-fs-error class="text-error text-sm text-center"></div>
-
-          <!-- ── Form ── -->
-          <form id="contact-form" class="space-y-7">
-
-            <!-- Industry -->
-            <div>
-              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-2">
-                <i data-lucide="building-2" class="w-3.5 h-3.5"></i> Your industry
-              </label>
-              <select name="industry" required class="select select-primary w-full rounded-xl" data-fs-field>
-                <option value="" disabled selected>Select your industry</option>
-                <option value="Finance & Banking">Finance & Banking</option>
-                <option value="Healthcare">Healthcare</option>
-                <option value="Retail & E-commerce">Retail & E-commerce</option>
-                <option value="Manufacturing">Manufacturing</option>
-                <option value="Tech & SaaS">Tech & SaaS</option>
-                <option value="Education">Education</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="divider my-0 opacity-20"></div>
-
-            <!-- AI Familiarity -->
-            <div>
-              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="gauge" class="w-3.5 h-3.5"></i> AI familiarity level
-              </label>
-              <input
-                type="range"
-                name="ai_familiarity"
-                min="1" max="5" value="3" step="1"
-                class="range range-primary range-sm w-full"
-                data-fs-field
-                id="familiarity-range"
-              />
-              <div class="flex justify-between text-[11px] text-base-content/35 mt-1.5 font-medium">
-                <span>Beginner</span><span>Curious</span><span>Familiar</span><span>Advanced</span><span>Expert</span>
+              <h1 class="welcome-title">AI READINESS CHECK</h1>
+              <p class="welcome-subtitle">
+                Et si ta 1ère résolution était de
+                <span class="text-accent">découvrir ton profil IA</span> ?
+              </p>
+              <p class="welcome-text">
+                Ce questionnaire rapide <strong>(5 dimensions, 5 profils)</strong> est conçu pour t'aider à
+                <strong>te positionner de manière volontaire et sans jugement sur ton rapport à l'IA</strong> :
+                ce que tu en comprends, comment tu l'intègres dans ton quotidien,
+                et comment tu la connectes à la vision IA de Onepoint.
+              </p>
+              <div class="welcome-badges">
+                <span class="badge"><i data-lucide="layers" class="badge-icon"></i> 5 dimensions</span>
+                <span class="badge"><i data-lucide="users" class="badge-icon"></i> 5 profils</span>
+                <span class="badge"><i data-lucide="clock" class="badge-icon"></i> ~2 min</span>
               </div>
+              <button type="button" class="btn btn-primary btn-glow" id="btn-start">
+                Commencer
+                <i data-lucide="arrow-right" class="btn-icon"></i>
+              </button>
             </div>
+          </section>
 
-            <div class="divider my-0 opacity-20"></div>
-
-            <!-- Use cases -->
-            <div>
-              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> AI use cases you're interested in
+          <!-- Step 1 — Industry -->
+          <section class="step" data-step="1">
+            <h2 class="step-title">Dans quel <span class="text-accent">secteur</span> travailles-tu ?</h2>
+            <p class="step-subtitle">Sélectionne ton domaine d'activité principal</p>
+            <div class="options-grid cols-3">
+              <label class="option-card">
+                <input type="radio" name="industry" value="Finance & Banque" required>
+                <div class="option-card-inner">
+                  <i data-lucide="landmark" class="option-icon"></i>
+                  <span class="option-label">Finance & Banque</span>
+                </div>
               </label>
-              <div class="grid grid-cols-2 gap-2.5">
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Customer Support" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="headset" class="w-4 h-4 text-base-content/40"></i> Customer Support</span>
-                </label>
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Data Analysis" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="bar-chart-3" class="w-4 h-4 text-base-content/40"></i> Data Analysis</span>
-                </label>
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Content Generation" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="pen-tool" class="w-4 h-4 text-base-content/40"></i> Content Generation</span>
-                </label>
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Process Automation" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="workflow" class="w-4 h-4 text-base-content/40"></i> Process Automation</span>
-                </label>
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Sales & Marketing" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="megaphone" class="w-4 h-4 text-base-content/40"></i> Sales & Marketing</span>
-                </label>
-                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="use_cases" value="Code & Dev Tools" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="code" class="w-4 h-4 text-base-content/40"></i> Code & Dev Tools</span>
-                </label>
-              </div>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Santé">
+                <div class="option-card-inner">
+                  <i data-lucide="heart-pulse" class="option-icon"></i>
+                  <span class="option-label">Santé</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Retail & E-commerce">
+                <div class="option-card-inner">
+                  <i data-lucide="shopping-bag" class="option-icon"></i>
+                  <span class="option-label">Retail & E-commerce</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Industrie">
+                <div class="option-card-inner">
+                  <i data-lucide="factory" class="option-icon"></i>
+                  <span class="option-label">Industrie</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Tech & SaaS">
+                <div class="option-card-inner">
+                  <i data-lucide="cpu" class="option-icon"></i>
+                  <span class="option-label">Tech & SaaS</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Éducation">
+                <div class="option-card-inner">
+                  <i data-lucide="graduation-cap" class="option-icon"></i>
+                  <span class="option-label">Éducation</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Secteur Public">
+                <div class="option-card-inner">
+                  <i data-lucide="building" class="option-icon"></i>
+                  <span class="option-label">Secteur Public</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Conseil">
+                <div class="option-card-inner">
+                  <i data-lucide="briefcase" class="option-icon"></i>
+                  <span class="option-label">Conseil</span>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="industry" value="Autre">
+                <div class="option-card-inner">
+                  <i data-lucide="more-horizontal" class="option-icon"></i>
+                  <span class="option-label">Autre</span>
+                </div>
+              </label>
             </div>
+          </section>
 
-            <div class="divider my-0 opacity-20"></div>
-
-            <!-- Team size -->
-            <div>
-              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="users" class="w-3.5 h-3.5"></i> Team size
-              </label>
-              <div class="grid grid-cols-4 gap-2" id="budget-group">
-                <label class="cursor-pointer">
-                  <input type="radio" name="team_size" value="1-10" class="hidden budget-radio" required />
-                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    1–10<br><span class="text-[10px] opacity-60">Startup</span>
+          <!-- Step 2 — AI Familiarity -->
+          <section class="step" data-step="2">
+            <h2 class="step-title">Quel est ton <span class="text-accent">niveau</span> de familiarité avec l'IA ?</h2>
+            <p class="step-subtitle">Pas de jugement, c'est pour mieux te connaître</p>
+            <div class="options-grid cols-1">
+              <label class="option-card option-card--level">
+                <input type="radio" name="ai_familiarity" value="1" required>
+                <div class="option-card-inner">
+                  <span class="level-emoji">🌱</span>
+                  <div class="level-text">
+                    <span class="option-label">Débutant</span>
+                    <span class="option-desc">J'ai entendu parler de l'IA mais je ne l'utilise pas encore</span>
                   </div>
-                </label>
-                <label class="cursor-pointer">
-                  <input type="radio" name="team_size" value="11-50" class="hidden budget-radio" />
-                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    11–50<br><span class="text-[10px] opacity-60">SMB</span>
-                  </div>
-                </label>
-                <label class="cursor-pointer">
-                  <input type="radio" name="team_size" value="51-200" class="hidden budget-radio" />
-                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    51–200<br><span class="text-[10px] opacity-60">Mid-size</span>
-                  </div>
-                </label>
-                <label class="cursor-pointer">
-                  <input type="radio" name="team_size" value="200+" class="hidden budget-radio" />
-                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    200+<br><span class="text-[10px] opacity-60">Enterprise</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div class="divider my-0 opacity-20"></div>
-
-            <!-- Readiness -->
-            <div>
-              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Current situation
+                </div>
               </label>
-              <div class="space-y-2.5">
-                <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
-                  <span class="flex items-center gap-2.5 text-sm font-medium">
-                    <i data-lucide="database" class="w-4 h-4 text-base-content/40"></i> We have clean, structured data
-                  </span>
-                  <input type="checkbox" name="has_data" value="yes" class="toggle toggle-primary toggle-sm" />
-                </label>
-                <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
-                  <span class="flex items-center gap-2.5 text-sm font-medium">
-                    <i data-lucide="shield-check" class="w-4 h-4 text-base-content/40"></i> AI budget is approved
-                  </span>
-                  <input type="checkbox" name="has_budget" value="yes" class="toggle toggle-secondary toggle-sm" />
-                </label>
-              </div>
+              <label class="option-card option-card--level">
+                <input type="radio" name="ai_familiarity" value="2">
+                <div class="option-card-inner">
+                  <span class="level-emoji">🔍</span>
+                  <div class="level-text">
+                    <span class="option-label">Curieux</span>
+                    <span class="option-desc">J'ai testé ChatGPT ou d'autres outils quelques fois</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-card option-card--level">
+                <input type="radio" name="ai_familiarity" value="3">
+                <div class="option-card-inner">
+                  <span class="level-emoji">⚡</span>
+                  <div class="level-text">
+                    <span class="option-label">Familier</span>
+                    <span class="option-desc">J'utilise l'IA régulièrement dans mon travail</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-card option-card--level">
+                <input type="radio" name="ai_familiarity" value="4">
+                <div class="option-card-inner">
+                  <span class="level-emoji">🚀</span>
+                  <div class="level-text">
+                    <span class="option-label">Avancé</span>
+                    <span class="option-desc">Je maîtrise plusieurs outils IA et je forme d'autres personnes</span>
+                  </div>
+                </div>
+              </label>
+              <label class="option-card option-card--level">
+                <input type="radio" name="ai_familiarity" value="5">
+                <div class="option-card-inner">
+                  <span class="level-emoji">🧠</span>
+                  <div class="level-text">
+                    <span class="option-label">Expert</span>
+                    <span class="option-desc">Je développe ou déploie des solutions IA</span>
+                  </div>
+                </div>
+              </label>
             </div>
+          </section>
 
-            <!-- Submit -->
-            <button type="submit" class="btn btn-primary w-full rounded-xl text-base font-semibold shadow-lg shadow-primary/25 mt-1" data-fs-submit-btn>
-              <i data-lucide="send" class="w-4 h-4"></i>
-              Get My AI Readiness Score
-            </button>
-          </form>
+          <!-- Step 3 — Use Cases -->
+          <section class="step" data-step="3">
+            <h2 class="step-title">Quels <span class="text-accent">cas d'usage</span> t'intéressent ?</h2>
+            <p class="step-subtitle">Tu peux en sélectionner plusieurs</p>
+            <div class="options-grid cols-2">
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Support Client">
+                <div class="option-card-inner">
+                  <i data-lucide="headset" class="option-icon"></i>
+                  <span class="option-label">Support Client</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Analyse de données">
+                <div class="option-card-inner">
+                  <i data-lucide="bar-chart-3" class="option-icon"></i>
+                  <span class="option-label">Analyse de données</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Génération de contenu">
+                <div class="option-card-inner">
+                  <i data-lucide="pen-tool" class="option-icon"></i>
+                  <span class="option-label">Génération de contenu</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Automatisation">
+                <div class="option-card-inner">
+                  <i data-lucide="workflow" class="option-icon"></i>
+                  <span class="option-label">Automatisation</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Sales & Marketing">
+                <div class="option-card-inner">
+                  <i data-lucide="megaphone" class="option-icon"></i>
+                  <span class="option-label">Sales & Marketing</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+              <label class="option-card option-card--check">
+                <input type="checkbox" name="use_cases" value="Code & Dev Tools">
+                <div class="option-card-inner">
+                  <i data-lucide="code" class="option-icon"></i>
+                  <span class="option-label">Code & Dev Tools</span>
+                  <div class="check-indicator"><i data-lucide="check" class="check-icon"></i></div>
+                </div>
+              </label>
+            </div>
+          </section>
 
-        </div>
+          <!-- Step 4 — Team Size -->
+          <section class="step" data-step="4">
+            <h2 class="step-title">Quelle est la <span class="text-accent">taille</span> de ton équipe ?</h2>
+            <p class="step-subtitle">L'équipe avec laquelle tu travailles au quotidien</p>
+            <div class="options-grid cols-2">
+              <label class="option-card option-card--size">
+                <input type="radio" name="team_size" value="1-10" required>
+                <div class="option-card-inner">
+                  <span class="size-number">1–10</span>
+                  <span class="option-label">Startup</span>
+                </div>
+              </label>
+              <label class="option-card option-card--size">
+                <input type="radio" name="team_size" value="11-50">
+                <div class="option-card-inner">
+                  <span class="size-number">11–50</span>
+                  <span class="option-label">PME</span>
+                </div>
+              </label>
+              <label class="option-card option-card--size">
+                <input type="radio" name="team_size" value="51-200">
+                <div class="option-card-inner">
+                  <span class="size-number">51–200</span>
+                  <span class="option-label">ETI</span>
+                </div>
+              </label>
+              <label class="option-card option-card--size">
+                <input type="radio" name="team_size" value="200+">
+                <div class="option-card-inner">
+                  <span class="size-number">200+</span>
+                  <span class="option-label">Grand Groupe</span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <!-- Step 5 — Current Situation -->
+          <section class="step" data-step="5">
+            <h2 class="step-title">Où en <span class="text-accent">es-tu</span> aujourd'hui ?</h2>
+            <p class="step-subtitle">Quelques questions sur ta situation actuelle</p>
+            <div class="toggle-list">
+              <label class="toggle-card">
+                <div class="toggle-info">
+                  <i data-lucide="database" class="toggle-icon"></i>
+                  <span class="toggle-label">Nous avons des données structurées et exploitables</span>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" name="has_data" value="yes">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <label class="toggle-card">
+                <div class="toggle-info">
+                  <i data-lucide="shield-check" class="toggle-icon"></i>
+                  <span class="toggle-label">Un budget IA est validé ou en cours</span>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" name="has_budget" value="yes">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <label class="toggle-card">
+                <div class="toggle-info">
+                  <i data-lucide="book-open" class="toggle-icon"></i>
+                  <span class="toggle-label">Notre équipe est formée ou en formation sur l'IA</span>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" name="has_training" value="yes">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+              <label class="toggle-card">
+                <div class="toggle-info">
+                  <i data-lucide="target" class="toggle-icon"></i>
+                  <span class="toggle-label">Nous avons identifié des cas d'usage prioritaires</span>
+                </div>
+                <div class="toggle-switch">
+                  <input type="checkbox" name="has_usecases" value="yes">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+            </div>
+          </section>
+
+          <!-- Step 6 — Result -->
+          <section class="step" data-step="6">
+            <div class="result">
+              <div class="result-circle">
+                <i data-lucide="sparkles" class="result-icon"></i>
+              </div>
+              <h2 class="result-title">Merci pour tes réponses !</h2>
+              <p class="result-text">
+                Nous allons analyser ton profil et te proposer des
+                <span class="text-accent">recommandations personnalisées</span> :
+                formations et bonnes pratiques.
+              </p>
+              <p class="result-subtext">
+                Tu contribues à accélérer l'élan collectif de Onepoint sur l'IA.
+              </p>
+              <button type="button" class="btn btn-ghost" id="btn-restart">
+                <i data-lucide="rotate-ccw" class="btn-icon"></i>
+                Recommencer
+              </button>
+            </div>
+          </section>
+
+        </form>
       </div>
 
-      <!-- Footer -->
-      <p class="text-center text-[11px] text-base-content/25 mt-6 font-medium">Powered by Formspree · Styled with DaisyUI</p>
+      <!-- Navigation -->
+      <div class="nav-buttons hidden" id="nav-buttons">
+        <button type="button" class="btn btn-ghost" id="btn-prev">
+          <i data-lucide="arrow-left" class="btn-icon"></i>
+          Retour
+        </button>
+        <button type="button" class="btn btn-primary" id="btn-next">
+          Suivant
+          <i data-lucide="arrow-right" class="btn-icon"></i>
+        </button>
+      </div>
 
     </div>
 
-    <!-- Formspree Ajax SDK -->
-    <script>
-      const FORMSPREE_FORM_ID = "xykbolyl";
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Propulsé par</span>
+      <span class="footer-brand">onepoint<span class="logo-dot">.</span></span>
+    </footer>
 
-      window.formspree =
-        window.formspree ||
-        function () {
-          (formspree.q = formspree.q || []).push(arguments);
-        };
-      formspree("initForm", {
-        formElement: "#contact-form",
-        formId: FORMSPREE_FORM_ID,
-      });
-    </script>
-    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
-    <script>
-      lucide.createIcons();
+  </div>
 
-      // Budget radio toggle styling
-      document.querySelectorAll('.budget-radio').forEach(function (radio) {
-        radio.addEventListener('change', function () {
-          document.querySelectorAll('.budget-card').forEach(function (card) {
-            card.style.borderColor = '';
-            card.style.backgroundColor = '';
-            card.style.color = '';
-          });
-          var card = radio.nextElementSibling;
-          var s = getComputedStyle(document.documentElement);
-          card.style.borderColor = s.getPropertyValue('--color-primary');
-          card.style.backgroundColor = s.getPropertyValue('--color-primary');
-          card.style.color = '#fff';
-        });
-      });
-    </script>
-  </body>
+  <script src="app.js"></script>
+</body>
 </html>
