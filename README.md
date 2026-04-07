@@ -1,16 +1,17 @@
-# React + Vite
+# test-formspree
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Static contact form demo deployed on GitHub Pages.
 
-Currently, two official plugins are available:
+**Stack:** HTML · Tailwind CSS v4 · DaisyUI v5 · Lucide Icons · Formspree (Ajax SDK)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
+Open `index.html` in your browser, or serve it:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npx serve .
+```
 
-## Expanding the ESLint configuration
+## Deploy
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Push to `main` — GitHub Pages serves `index.html` from the repo root.
