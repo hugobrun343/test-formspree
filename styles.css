@@ -189,6 +189,8 @@ body::after {
 .logo-img {
   height: 46px;
   width: auto;
+  max-height: 46px;
+  max-width: 200px;
   display: block;
 }
 
@@ -835,6 +837,8 @@ body::after {
 .footer-logo {
   height: 26px;
   width: auto;
+  max-height: 26px;
+  max-width: 120px;
 }
 
 .footer-logo--light {
