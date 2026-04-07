@@ -33,11 +33,22 @@
 
   /* ---- Theme ---- */
 
+  function syncLogoVisibility() {
+    var isLight = htmlEl.getAttribute("data-theme") === "light";
+    document.querySelectorAll(".logo-img--dark, .footer-logo--dark").forEach(function (el) {
+      el.hidden = isLight;
+    });
+    document.querySelectorAll(".logo-img--light, .footer-logo--light").forEach(function (el) {
+      el.hidden = !isLight;
+    });
+  }
+
   function initTheme() {
     var saved = localStorage.getItem("op-theme");
     if (saved === "light") {
       htmlEl.setAttribute("data-theme", "light");
     }
+    syncLogoVisibility();
   }
 
   function toggleTheme() {
@@ -51,6 +62,8 @@
       htmlEl.setAttribute("data-theme", "light");
       localStorage.setItem("op-theme", "light");
     }
+
+    syncLogoVisibility();
 
     setTimeout(function () {
       htmlEl.classList.remove("theme-transitioning");

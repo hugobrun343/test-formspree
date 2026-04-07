@@ -195,15 +195,15 @@ body::after {
 }
 
 .logo-img--light {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="light"] .logo-img--dark {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="light"] .logo-img--light {
-  display: block;
+  display: block !important;
 }
 
 /* ---------- Theme Toggle ---------- */
@@ -842,15 +842,15 @@ body::after {
 }
 
 .footer-logo--light {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="light"] .footer-logo--dark {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="light"] .footer-logo--light {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 /* ---------- Animations ---------- */
