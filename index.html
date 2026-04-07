@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Readiness Check — Onepoint</title>
-  <meta name="description" content="Découvre ton profil IA en 2 minutes. Questionnaire interactif par Onepoint.">
+  <title>Baromètre IA ETI — Onepoint</title>
+  <meta name="description" content="Évaluez la maturité IA de votre ETI en 2 minutes. Baromètre interactif par Onepoint.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -56,20 +56,20 @@
               <div class="welcome-icon">
                 <i data-lucide="brain" class="welcome-brain"></i>
               </div>
-              <h1 class="welcome-title">AI READINESS CHECK</h1>
+              <h1 class="welcome-title">BAROMÈTRE IA ETI</h1>
               <p class="welcome-subtitle">
-                Et si ta 1ère résolution était de
-                <span class="text-accent">découvrir ton profil IA</span> ?
+                Où en est votre ETI dans
+                <span class="text-accent">son adoption de l'IA</span> ?
               </p>
               <p class="welcome-text">
-                Ce questionnaire rapide <strong>(5 dimensions, 5 profils)</strong> est conçu pour t'aider à
-                <strong>te positionner de manière volontaire et sans jugement sur ton rapport à l'IA</strong> :
-                ce que tu en comprends, comment tu l'intègres dans ton quotidien,
-                et comment tu la connectes à la vision IA de Onepoint.
+                Ce baromètre rapide <strong>(5 dimensions clés)</strong> vous aide à
+                <strong>évaluer la maturité IA de votre entreprise</strong> :
+                votre secteur, votre niveau de pratique, vos cas d'usage prioritaires,
+                votre organisation et votre état de préparation.
               </p>
               <div class="welcome-badges">
                 <span class="badge"><i data-lucide="layers" class="badge-icon"></i> 5 dimensions</span>
-                <span class="badge"><i data-lucide="users" class="badge-icon"></i> 5 profils</span>
+                <span class="badge"><i data-lucide="building" class="badge-icon"></i> Pensé pour les ETI</span>
                 <span class="badge"><i data-lucide="clock" class="badge-icon"></i> ~2 min</span>
               </div>
               <button type="button" class="btn btn-primary btn-glow" id="btn-start">
@@ -81,8 +81,8 @@
 
           <!-- Step 1 — Industry -->
           <section class="step" data-step="1">
-            <h2 class="step-title">Dans quel <span class="text-accent">secteur</span> travailles-tu ?</h2>
-            <p class="step-subtitle">Sélectionne ton domaine d'activité principal</p>
+            <h2 class="step-title">Dans quel <span class="text-accent">secteur</span> évolue votre ETI ?</h2>
+            <p class="step-subtitle">Identifions votre contexte sectoriel</p>
             <div class="options-grid cols-3">
               <label class="option-card">
                 <input type="radio" name="industry" value="Finance & Banque" required>
@@ -152,56 +152,56 @@
 
           <!-- Step 2 — AI Familiarity -->
           <section class="step" data-step="2">
-            <h2 class="step-title">Quel est ton <span class="text-accent">niveau</span> de familiarité avec l'IA ?</h2>
-            <p class="step-subtitle">Pas de jugement, c'est pour mieux te connaître</p>
+            <h2 class="step-title">Quel est le <span class="text-accent">niveau</span> de maturité IA de votre organisation ?</h2>
+            <p class="step-subtitle">Évaluez où en est votre ETI dans l'adoption de l'IA</p>
             <div class="options-grid cols-1">
               <label class="option-card option-card--level">
                 <input type="radio" name="ai_familiarity" value="1" required>
                 <div class="option-card-inner">
-                  <span class="level-emoji">🌱</span>
+                  <i data-lucide="sprout" class="option-icon"></i>
                   <div class="level-text">
-                    <span class="option-label">Débutant</span>
-                    <span class="option-desc">J'ai entendu parler de l'IA mais je ne l'utilise pas encore</span>
+                    <span class="option-label">Découverte</span>
+                    <span class="option-desc">L'IA est un sujet émergent, pas encore de projet concret</span>
                   </div>
                 </div>
               </label>
               <label class="option-card option-card--level">
                 <input type="radio" name="ai_familiarity" value="2">
                 <div class="option-card-inner">
-                  <span class="level-emoji">🔍</span>
+                  <i data-lucide="search" class="option-icon"></i>
                   <div class="level-text">
-                    <span class="option-label">Curieux</span>
-                    <span class="option-desc">J'ai testé ChatGPT ou d'autres outils quelques fois</span>
+                    <span class="option-label">Exploration</span>
+                    <span class="option-desc">Quelques collaborateurs testent des outils IA ponctuellement</span>
                   </div>
                 </div>
               </label>
               <label class="option-card option-card--level">
                 <input type="radio" name="ai_familiarity" value="3">
                 <div class="option-card-inner">
-                  <span class="level-emoji">⚡</span>
+                  <i data-lucide="zap" class="option-icon"></i>
                   <div class="level-text">
-                    <span class="option-label">Familier</span>
-                    <span class="option-desc">J'utilise l'IA régulièrement dans mon travail</span>
+                    <span class="option-label">Adoption</span>
+                    <span class="option-desc">Des projets IA sont en place sur certains métiers ou processus</span>
                   </div>
                 </div>
               </label>
               <label class="option-card option-card--level">
                 <input type="radio" name="ai_familiarity" value="4">
                 <div class="option-card-inner">
-                  <span class="level-emoji">🚀</span>
+                  <i data-lucide="rocket" class="option-icon"></i>
                   <div class="level-text">
-                    <span class="option-label">Avancé</span>
-                    <span class="option-desc">Je maîtrise plusieurs outils IA et je forme d'autres personnes</span>
+                    <span class="option-label">Accélération</span>
+                    <span class="option-desc">L'IA est intégrée dans plusieurs fonctions avec des résultats mesurables</span>
                   </div>
                 </div>
               </label>
               <label class="option-card option-card--level">
                 <input type="radio" name="ai_familiarity" value="5">
                 <div class="option-card-inner">
-                  <span class="level-emoji">🧠</span>
+                  <i data-lucide="brain" class="option-icon"></i>
                   <div class="level-text">
-                    <span class="option-label">Expert</span>
-                    <span class="option-desc">Je développe ou déploie des solutions IA</span>
+                    <span class="option-label">Transformation</span>
+                    <span class="option-desc">L'IA est un levier stratégique piloté au niveau de la direction</span>
                   </div>
                 </div>
               </label>
@@ -210,8 +210,8 @@
 
           <!-- Step 3 — Use Cases -->
           <section class="step" data-step="3">
-            <h2 class="step-title">Quels <span class="text-accent">cas d'usage</span> t'intéressent ?</h2>
-            <p class="step-subtitle">Tu peux en sélectionner plusieurs</p>
+            <h2 class="step-title">Quels <span class="text-accent">cas d'usage</span> IA sont prioritaires pour votre ETI ?</h2>
+            <p class="step-subtitle">Sélectionnez tous ceux qui vous concernent</p>
             <div class="options-grid cols-2">
               <label class="option-card option-card--check">
                 <input type="checkbox" name="use_cases" value="Support Client">
@@ -266,34 +266,34 @@
 
           <!-- Step 4 — Team Size -->
           <section class="step" data-step="4">
-            <h2 class="step-title">Quelle est la <span class="text-accent">taille</span> de ton équipe ?</h2>
-            <p class="step-subtitle">L'équipe avec laquelle tu travailles au quotidien</p>
+            <h2 class="step-title">Quelle est la <span class="text-accent">taille</span> de votre organisation ?</h2>
+            <p class="step-subtitle">Le nombre de collaborateurs de votre ETI</p>
             <div class="options-grid cols-2">
               <label class="option-card option-card--size">
-                <input type="radio" name="team_size" value="1-10" required>
+                <input type="radio" name="team_size" value="50-250" required>
                 <div class="option-card-inner">
-                  <span class="size-number">1–10</span>
-                  <span class="option-label">Startup</span>
+                  <span class="size-number">50–250</span>
+                  <span class="option-label">Petite ETI</span>
                 </div>
               </label>
               <label class="option-card option-card--size">
-                <input type="radio" name="team_size" value="11-50">
+                <input type="radio" name="team_size" value="250-500">
                 <div class="option-card-inner">
-                  <span class="size-number">11–50</span>
-                  <span class="option-label">PME</span>
+                  <span class="size-number">250–500</span>
+                  <span class="option-label">ETI moyenne</span>
                 </div>
               </label>
               <label class="option-card option-card--size">
-                <input type="radio" name="team_size" value="51-200">
+                <input type="radio" name="team_size" value="500-2000">
                 <div class="option-card-inner">
-                  <span class="size-number">51–200</span>
-                  <span class="option-label">ETI</span>
+                  <span class="size-number">500–2k</span>
+                  <span class="option-label">Grande ETI</span>
                 </div>
               </label>
               <label class="option-card option-card--size">
-                <input type="radio" name="team_size" value="200+">
+                <input type="radio" name="team_size" value="2000+">
                 <div class="option-card-inner">
-                  <span class="size-number">200+</span>
+                  <span class="size-number">2 000+</span>
                   <span class="option-label">Grand Groupe</span>
                 </div>
               </label>
@@ -302,13 +302,13 @@
 
           <!-- Step 5 — Current Situation -->
           <section class="step" data-step="5">
-            <h2 class="step-title">Où en <span class="text-accent">es-tu</span> aujourd'hui ?</h2>
-            <p class="step-subtitle">Quelques questions sur ta situation actuelle</p>
+            <h2 class="step-title">Où en est votre <span class="text-accent">ETI</span> aujourd'hui ?</h2>
+            <p class="step-subtitle">État des lieux de vos fondations IA</p>
             <div class="toggle-list">
               <label class="toggle-card">
                 <div class="toggle-info">
                   <i data-lucide="database" class="toggle-icon"></i>
-                  <span class="toggle-label">Nous avons des données structurées et exploitables</span>
+                  <span class="toggle-label">Nos données sont structurées et exploitables par des outils IA</span>
                 </div>
                 <div class="toggle-switch">
                   <input type="checkbox" name="has_data" value="yes">
@@ -318,7 +318,7 @@
               <label class="toggle-card">
                 <div class="toggle-info">
                   <i data-lucide="shield-check" class="toggle-icon"></i>
-                  <span class="toggle-label">Un budget IA est validé ou en cours</span>
+                  <span class="toggle-label">Un budget dédié à l'IA est validé ou en cours de validation</span>
                 </div>
                 <div class="toggle-switch">
                   <input type="checkbox" name="has_budget" value="yes">
@@ -328,7 +328,7 @@
               <label class="toggle-card">
                 <div class="toggle-info">
                   <i data-lucide="book-open" class="toggle-icon"></i>
-                  <span class="toggle-label">Notre équipe est formée ou en formation sur l'IA</span>
+                  <span class="toggle-label">Des actions de formation IA sont déployées pour les collaborateurs</span>
                 </div>
                 <div class="toggle-switch">
                   <input type="checkbox" name="has_training" value="yes">
@@ -338,7 +338,7 @@
               <label class="toggle-card">
                 <div class="toggle-info">
                   <i data-lucide="target" class="toggle-icon"></i>
-                  <span class="toggle-label">Nous avons identifié des cas d'usage prioritaires</span>
+                  <span class="toggle-label">La direction a identifié des cas d'usage IA prioritaires</span>
                 </div>
                 <div class="toggle-switch">
                   <input type="checkbox" name="has_usecases" value="yes">
@@ -354,14 +354,14 @@
               <div class="result-circle">
                 <i data-lucide="sparkles" class="result-icon"></i>
               </div>
-              <h2 class="result-title">Merci pour tes réponses !</h2>
+              <h2 class="result-title">Merci pour votre participation !</h2>
               <p class="result-text">
-                Nous allons analyser ton profil et te proposer des
-                <span class="text-accent">recommandations personnalisées</span> :
-                formations et bonnes pratiques.
+                Nous analysons vos réponses pour établir le
+                <span class="text-accent">profil de maturité IA de votre ETI</span>
+                et vous proposer des recommandations concrètes.
               </p>
               <p class="result-subtext">
-                Tu contribues à accélérer l'élan collectif de Onepoint sur l'IA.
+                Un consultant Onepoint vous contactera avec votre diagnostic personnalisé.
               </p>
               <button type="button" class="btn btn-ghost" id="btn-restart">
                 <i data-lucide="rotate-ccw" class="btn-icon"></i>

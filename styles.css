@@ -527,11 +527,10 @@ body::after {
   text-align: left;
 }
 
-.level-emoji {
-  font-size: 1.6rem;
+.option-card--level .option-icon {
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
-  width: 40px;
-  text-align: center;
 }
 
 .level-text {
