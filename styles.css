@@ -178,18 +178,30 @@ body::after {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding: 0 4px;
+  padding: 32px 4px 0;
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
+  display: flex;
+  align-items: center;
 }
 
-.logo-dot {
-  color: var(--accent);
+.logo-img {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+
+.logo-img--light {
+  display: none;
+}
+
+[data-theme="light"] .logo-img--dark {
+  display: none;
+}
+
+[data-theme="light"] .logo-img--light {
+  display: block;
 }
 
 /* ---------- Theme Toggle ---------- */
@@ -810,19 +822,31 @@ body::after {
 /* ---------- Footer ---------- */
 
 .footer {
-  text-align: center;
-  padding: 20px 0 0;
+  text-align: left;
+  padding: 32px 0 0;
   font-size: 0.75rem;
   color: var(--text-tertiary);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
 }
 
-.footer-brand {
-  font-weight: 700;
-  color: var(--text-secondary);
+.footer-logo {
+  height: 26px;
+  width: auto;
+}
+
+.footer-logo--light {
+  display: none;
+}
+
+[data-theme="light"] .footer-logo--dark {
+  display: none;
+}
+
+[data-theme="light"] .footer-logo--light {
+  display: inline-block;
 }
 
 /* ---------- Animations ---------- */
