@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Build Your Perfect Day</title>
+    <title>AI Readiness Assessment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -31,11 +31,11 @@
       <!-- Header -->
       <div class="text-center mb-8">
         <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/15 mb-4">
-          <i data-lucide="sun" class="w-7 h-7 text-primary"></i>
+          <i data-lucide="brain" class="w-7 h-7 text-primary"></i>
         </div>
-        <h1 class="text-3xl font-bold tracking-tight text-base-content">Build Your Perfect Day</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">Is Your Business AI-Ready?</h1>
         <p class="mt-2 text-base-content/50 text-sm max-w-md mx-auto leading-relaxed whitespace-nowrap">
-          Customize your ideal day — we'll make it happen (maybe).
+          Take 1 minute to assess your AI readiness and get insights.
         </p>
       </div>
 
@@ -49,8 +49,8 @@
               <div class="bg-success/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto">
                 <i data-lucide="check-circle-2" class="w-10 h-10 text-success"></i>
               </div>
-              <h2 class="mt-5 text-xl font-semibold text-base-content">Looks amazing!</h2>
-              <p class="mt-1.5 text-base-content/50 text-sm">Your perfect day has been submitted.</p>
+              <h2 class="mt-5 text-xl font-semibold text-base-content">Thanks for your answers!</h2>
+              <p class="mt-1.5 text-base-content/50 text-sm">We'll get back to you with personalized AI insights.</p>
             </div>
           </div>
 
@@ -60,106 +60,108 @@
           <!-- ── Form ── -->
           <form id="contact-form" class="space-y-7">
 
-            <!-- Mood -->
+            <!-- Industry -->
             <div>
               <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-2">
-                <i data-lucide="smile" class="w-3.5 h-3.5"></i> Current mood
+                <i data-lucide="building-2" class="w-3.5 h-3.5"></i> Your industry
               </label>
-              <select name="mood" required class="select select-primary w-full rounded-xl" data-fs-field>
-                <option value="" disabled selected>How are you feeling?</option>
-                <option value="Energetic">Energetic</option>
-                <option value="Chill">Chill</option>
-                <option value="Motivated">Motivated</option>
-                <option value="Sleepy">Sleepy</option>
-                <option value="Excited">Excited</option>
+              <select name="industry" required class="select select-primary w-full rounded-xl" data-fs-field>
+                <option value="" disabled selected>Select your industry</option>
+                <option value="Finance & Banking">Finance & Banking</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Retail & E-commerce">Retail & E-commerce</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Tech & SaaS">Tech & SaaS</option>
+                <option value="Education">Education</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="divider my-0 opacity-20"></div>
 
-            <!-- Wake-up time -->
+            <!-- AI Familiarity -->
             <div>
               <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="alarm-clock" class="w-3.5 h-3.5"></i> Ideal wake-up time
+                <i data-lucide="gauge" class="w-3.5 h-3.5"></i> AI familiarity level
               </label>
               <input
                 type="range"
-                name="wakeup"
-                min="5" max="13" value="8" step="2"
+                name="ai_familiarity"
+                min="1" max="5" value="3" step="1"
                 class="range range-primary range-sm w-full"
                 data-fs-field
-                id="wakeup-range"
+                id="familiarity-range"
               />
               <div class="flex justify-between text-[11px] text-base-content/35 mt-1.5 font-medium">
-                <span>5 AM</span><span>7 AM</span><span>9 AM</span><span>11 AM</span><span>1 PM</span>
+                <span>Beginner</span><span>Curious</span><span>Familiar</span><span>Advanced</span><span>Expert</span>
               </div>
             </div>
 
             <div class="divider my-0 opacity-20"></div>
 
-            <!-- Activities -->
+            <!-- Use cases -->
             <div>
               <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> Pick your activities
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> AI use cases you're interested in
               </label>
               <div class="grid grid-cols-2 gap-2.5">
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Coffee" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="coffee" class="w-4 h-4 text-base-content/40"></i> Coffee run</span>
+                  <input type="checkbox" name="use_cases" value="Customer Support" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="headset" class="w-4 h-4 text-base-content/40"></i> Customer Support</span>
                 </label>
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Workout" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="dumbbell" class="w-4 h-4 text-base-content/40"></i> Workout</span>
+                  <input type="checkbox" name="use_cases" value="Data Analysis" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="bar-chart-3" class="w-4 h-4 text-base-content/40"></i> Data Analysis</span>
                 </label>
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Reading" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="book-open" class="w-4 h-4 text-base-content/40"></i> Reading</span>
+                  <input type="checkbox" name="use_cases" value="Content Generation" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="pen-tool" class="w-4 h-4 text-base-content/40"></i> Content Generation</span>
                 </label>
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Gaming" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="gamepad-2" class="w-4 h-4 text-base-content/40"></i> Gaming</span>
+                  <input type="checkbox" name="use_cases" value="Process Automation" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="workflow" class="w-4 h-4 text-base-content/40"></i> Process Automation</span>
                 </label>
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Cooking" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="chef-hat" class="w-4 h-4 text-base-content/40"></i> Cooking</span>
+                  <input type="checkbox" name="use_cases" value="Sales & Marketing" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="megaphone" class="w-4 h-4 text-base-content/40"></i> Sales & Marketing</span>
                 </label>
                 <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
-                  <input type="checkbox" name="activities" value="Music" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
-                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="headphones" class="w-4 h-4 text-base-content/40"></i> Music</span>
+                  <input type="checkbox" name="use_cases" value="Code & Dev Tools" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="code" class="w-4 h-4 text-base-content/40"></i> Code & Dev Tools</span>
                 </label>
               </div>
             </div>
 
             <div class="divider my-0 opacity-20"></div>
 
-            <!-- Budget -->
+            <!-- Team size -->
             <div>
               <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="wallet" class="w-3.5 h-3.5"></i> Budget for the day
+                <i data-lucide="users" class="w-3.5 h-3.5"></i> Team size
               </label>
               <div class="grid grid-cols-4 gap-2" id="budget-group">
                 <label class="cursor-pointer">
-                  <input type="radio" name="budget" value="$0 – Free" class="hidden budget-radio" required />
+                  <input type="radio" name="team_size" value="1-10" class="hidden budget-radio" required />
                   <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    $0<br><span class="text-[10px] opacity-60">Free</span>
+                    1–10<br><span class="text-[10px] opacity-60">Startup</span>
                   </div>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="budget" value="$20 – Casual" class="hidden budget-radio" />
+                  <input type="radio" name="team_size" value="11-50" class="hidden budget-radio" />
                   <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    $20<br><span class="text-[10px] opacity-60">Casual</span>
+                    11–50<br><span class="text-[10px] opacity-60">SMB</span>
                   </div>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="budget" value="$50 – Treat" class="hidden budget-radio" />
+                  <input type="radio" name="team_size" value="51-200" class="hidden budget-radio" />
                   <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    $50<br><span class="text-[10px] opacity-60">Treat</span>
+                    51–200<br><span class="text-[10px] opacity-60">Mid-size</span>
                   </div>
                 </label>
                 <label class="cursor-pointer">
-                  <input type="radio" name="budget" value="$100+ – Splurge" class="hidden budget-radio" />
+                  <input type="radio" name="team_size" value="200+" class="hidden budget-radio" />
                   <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
-                    $100+<br><span class="text-[10px] opacity-60">Splurge</span>
+                    200+<br><span class="text-[10px] opacity-60">Enterprise</span>
                   </div>
                 </label>
               </div>
@@ -167,23 +169,23 @@
 
             <div class="divider my-0 opacity-20"></div>
 
-            <!-- Preferences -->
+            <!-- Readiness -->
             <div>
               <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
-                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Preferences
+                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Current situation
               </label>
               <div class="space-y-2.5">
                 <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
                   <span class="flex items-center gap-2.5 text-sm font-medium">
-                    <i data-lucide="moon" class="w-4 h-4 text-base-content/40"></i> Dark mode person?
+                    <i data-lucide="database" class="w-4 h-4 text-base-content/40"></i> We have clean, structured data
                   </span>
-                  <input type="checkbox" name="dark_mode" value="yes" class="toggle toggle-primary toggle-sm" />
+                  <input type="checkbox" name="has_data" value="yes" class="toggle toggle-primary toggle-sm" />
                 </label>
                 <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
                   <span class="flex items-center gap-2.5 text-sm font-medium">
-                    <i data-lucide="smartphone" class="w-4 h-4 text-base-content/40"></i> Phone addict?
+                    <i data-lucide="shield-check" class="w-4 h-4 text-base-content/40"></i> AI budget is approved
                   </span>
-                  <input type="checkbox" name="phone_addict" value="yes" class="toggle toggle-secondary toggle-sm" />
+                  <input type="checkbox" name="has_budget" value="yes" class="toggle toggle-secondary toggle-sm" />
                 </label>
               </div>
             </div>
@@ -191,7 +193,7 @@
             <!-- Submit -->
             <button type="submit" class="btn btn-primary w-full rounded-xl text-base font-semibold shadow-lg shadow-primary/25 mt-1" data-fs-submit-btn>
               <i data-lucide="send" class="w-4 h-4"></i>
-              Submit My Perfect Day
+              Get My AI Readiness Score
             </button>
           </form>
 
