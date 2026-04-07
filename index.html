@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cupcake">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Your Perfect Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      }
+      [data-theme="cupcake"] {
+        --color-primary: #e8956a;
+        --color-primary-content: #fff;
+        --color-secondary: #d4a574;
+        --color-secondary-content: #fff;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen bg-[#fdf0e6] flex items-center justify-center px-4 py-12 font-sans antialiased">
+
+    <div class="w-full max-w-xl">
+
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/15 mb-4">
+          <i data-lucide="sun" class="w-7 h-7 text-primary"></i>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-base-content">Build Your Perfect Day</h1>
+        <p class="mt-2 text-base-content/50 text-sm max-w-md mx-auto leading-relaxed whitespace-nowrap">
+          Customize your ideal day — we'll make it happen (maybe).
+        </p>
+      </div>
+
+      <!-- Card -->
+      <div class="card bg-base-100 shadow-2xl rounded-3xl border border-base-300/40">
+        <div class="card-body px-10 py-10">
+
+          <!-- ── Success ── -->
+          <div data-fs-success class="hidden">
+            <div class="text-center py-10">
+              <div class="bg-success/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto">
+                <i data-lucide="check-circle-2" class="w-10 h-10 text-success"></i>
+              </div>
+              <h2 class="mt-5 text-xl font-semibold text-base-content">Looks amazing!</h2>
+              <p class="mt-1.5 text-base-content/50 text-sm">Your perfect day has been submitted.</p>
+            </div>
+          </div>
+
+          <!-- ── Error ── -->
+          <div data-fs-error class="text-error text-sm text-center"></div>
+
+          <!-- ── Form ── -->
+          <form id="contact-form" class="space-y-7">
+
+            <!-- Mood -->
+            <div>
+              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-2">
+                <i data-lucide="smile" class="w-3.5 h-3.5"></i> Current mood
+              </label>
+              <select name="mood" required class="select select-primary w-full rounded-xl" data-fs-field>
+                <option value="" disabled selected>How are you feeling?</option>
+                <option value="Energetic">Energetic</option>
+                <option value="Chill">Chill</option>
+                <option value="Motivated">Motivated</option>
+                <option value="Sleepy">Sleepy</option>
+                <option value="Excited">Excited</option>
+              </select>
+            </div>
+
+            <div class="divider my-0 opacity-20"></div>
+
+            <!-- Wake-up time -->
+            <div>
+              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
+                <i data-lucide="alarm-clock" class="w-3.5 h-3.5"></i> Ideal wake-up time
+              </label>
+              <input
+                type="range"
+                name="wakeup"
+                min="5" max="13" value="8" step="2"
+                class="range range-primary range-sm w-full"
+                data-fs-field
+                id="wakeup-range"
+              />
+              <div class="flex justify-between text-[11px] text-base-content/35 mt-1.5 font-medium">
+                <span>5 AM</span><span>7 AM</span><span>9 AM</span><span>11 AM</span><span>1 PM</span>
+              </div>
+            </div>
+
+            <div class="divider my-0 opacity-20"></div>
+
+            <!-- Activities -->
+            <div>
+              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i> Pick your activities
+              </label>
+              <div class="grid grid-cols-2 gap-2.5">
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Coffee" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="coffee" class="w-4 h-4 text-base-content/40"></i> Coffee run</span>
+                </label>
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Workout" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="dumbbell" class="w-4 h-4 text-base-content/40"></i> Workout</span>
+                </label>
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Reading" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="book-open" class="w-4 h-4 text-base-content/40"></i> Reading</span>
+                </label>
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Gaming" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="gamepad-2" class="w-4 h-4 text-base-content/40"></i> Gaming</span>
+                </label>
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Cooking" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="chef-hat" class="w-4 h-4 text-base-content/40"></i> Cooking</span>
+                </label>
+                <label class="flex items-center gap-3 px-3.5 py-3 rounded-xl border border-base-300/50 hover:border-primary/40 hover:bg-primary/5 transition-all cursor-pointer has-[:checked]:border-primary has-[:checked]:bg-primary/10">
+                  <input type="checkbox" name="activities" value="Music" class="checkbox checkbox-primary checkbox-sm rounded-lg" />
+                  <span class="flex items-center gap-2 text-sm font-medium"><i data-lucide="headphones" class="w-4 h-4 text-base-content/40"></i> Music</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="divider my-0 opacity-20"></div>
+
+            <!-- Budget -->
+            <div>
+              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
+                <i data-lucide="wallet" class="w-3.5 h-3.5"></i> Budget for the day
+              </label>
+              <div class="grid grid-cols-4 gap-2" id="budget-group">
+                <label class="cursor-pointer">
+                  <input type="radio" name="budget" value="$0 – Free" class="hidden budget-radio" required />
+                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
+                    $0<br><span class="text-[10px] opacity-60">Free</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="budget" value="$20 – Casual" class="hidden budget-radio" />
+                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
+                    $20<br><span class="text-[10px] opacity-60">Casual</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="budget" value="$50 – Treat" class="hidden budget-radio" />
+                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
+                    $50<br><span class="text-[10px] opacity-60">Treat</span>
+                  </div>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="budget" value="$100+ – Splurge" class="hidden budget-radio" />
+                  <div class="budget-card text-center py-3 rounded-xl border border-base-300/50 text-sm font-medium transition-all hover:border-primary/40">
+                    $100+<br><span class="text-[10px] opacity-60">Splurge</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="divider my-0 opacity-20"></div>
+
+            <!-- Preferences -->
+            <div>
+              <label class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 mb-3">
+                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i> Preferences
+              </label>
+              <div class="space-y-2.5">
+                <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
+                  <span class="flex items-center gap-2.5 text-sm font-medium">
+                    <i data-lucide="moon" class="w-4 h-4 text-base-content/40"></i> Dark mode person?
+                  </span>
+                  <input type="checkbox" name="dark_mode" value="yes" class="toggle toggle-primary toggle-sm" />
+                </label>
+                <label class="flex items-center justify-between px-4 py-3.5 rounded-xl border border-base-300/50 cursor-pointer hover:border-primary/40 transition-all">
+                  <span class="flex items-center gap-2.5 text-sm font-medium">
+                    <i data-lucide="smartphone" class="w-4 h-4 text-base-content/40"></i> Phone addict?
+                  </span>
+                  <input type="checkbox" name="phone_addict" value="yes" class="toggle toggle-secondary toggle-sm" />
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary w-full rounded-xl text-base font-semibold shadow-lg shadow-primary/25 mt-1" data-fs-submit-btn>
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Submit My Perfect Day
+            </button>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-center text-[11px] text-base-content/25 mt-6 font-medium">Powered by Formspree · Styled with DaisyUI</p>
+
+    </div>
+
+    <!-- Formspree Ajax SDK -->
+    <script>
+      const FORMSPREE_FORM_ID = "xykbolyl";
+
+      window.formspree =
+        window.formspree ||
+        function () {
+          (formspree.q = formspree.q || []).push(arguments);
+        };
+      formspree("initForm", {
+        formElement: "#contact-form",
+        formId: FORMSPREE_FORM_ID,
+      });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+    <script>
+      lucide.createIcons();
+
+      // Budget radio toggle styling
+      document.querySelectorAll('.budget-radio').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          document.querySelectorAll('.budget-card').forEach(function (card) {
+            card.style.borderColor = '';
+            card.style.backgroundColor = '';
+            card.style.color = '';
+          });
+          var card = radio.nextElementSibling;
+          var s = getComputedStyle(document.documentElement);
+          card.style.borderColor = s.getPropertyValue('--color-primary');
+          card.style.backgroundColor = s.getPropertyValue('--color-primary');
+          card.style.color = '#fff';
+        });
+      });
+    </script>
+  </body>
+</html>
